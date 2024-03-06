@@ -14,9 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
-            UserTableSeeder::class,
+            UserTableSeeder::class, // This should match the actual class name and file name
             SchoolSeeder::class,
             ClassesSeeder::class,
+            RolesAndPermissionsSeeder::class
         ]);
     }
 }

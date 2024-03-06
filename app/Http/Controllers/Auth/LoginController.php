@@ -35,10 +35,10 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ($user->hasRole('super_admin')) {
-            return redirect('/dashboard/super-admin');
+        if ($user->hasRole('superadmin')) {
+            return redirect('/dashboard/superadmin');
         } elseif ($user->hasRole('admin_sekolah')) {
-            return redirect('/dashboard/school-admin');
+            return redirect('/dashboard/schooladmin');
         } elseif ($user->hasRole('guru')) {
             return redirect('/dashboard/teacher');
         } elseif ($user->hasRole('siswa')) {

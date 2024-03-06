@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
+            $table->string('guard_name')->default('web');
             $table->string('name'); // e.g., super_admin, admin_school, teacher, student
             $table->timestamps();
         });

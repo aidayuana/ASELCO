@@ -32,9 +32,8 @@ class SchoolSeeder extends Seeder
         // Memasukkan data sekolah ke database
         foreach ($schools as $school) {
             DB::table('schools')->insert([
-                'school_name' => $school['school_name'],
-                'address' => $school['address'],
-                // Pastikan untuk menyesuaikan ini dengan kolom yang ada pada tabel schools Anda
+                'school_name' => 'SMK TELKOM MALANG', // Change 'school_name' to 'name' if that's the correct column
+                'address' => 'Jl. Danau Ranau, Sawojajar, Kec. Kedungkandang, Kota Malang',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

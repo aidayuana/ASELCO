@@ -20,12 +20,12 @@ class ClassesSeeder extends Seeder
         foreach ($schools as $school) {
             Classes::create([
                 'school_id' => $school->id,
-                'school_name' => 'Kelas A', // Sesuaikan dengan nama kelas yang diinginkan
+                'name' => 'Kelas A', // Sesuaikan dengan nama kelas yang diinginkan
             ]);
 
             Classes::create([
                 'school_id' => $school->id,
-                'school_name' => 'Kelas B', // Sesuaikan dengan nama kelas yang diinginkan
+                'name' => 'Kelas B', // Sesuaikan dengan nama kelas yang diinginkan
             ]);
 
             // Tambahkan kelas lain sesuai kebutuhan

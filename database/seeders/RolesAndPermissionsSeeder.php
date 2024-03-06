@@ -25,10 +25,10 @@ class RolesAndPermissionsSeeder extends Seeder
         }
 
         // Buat Role dan Tetapkan Permission ke Role
-        $roleSuperAdmin = Role::firstOrCreate(['name' => 'super admin']);
+        $roleSuperAdmin = Role::firstOrCreate(['name' => 'superadmin']);
         $roleSuperAdmin->givePermissionTo(['manage users', 'manage courses', 'manage schools']);
 
-        $roleSchoolAdmin = Role::firstOrCreate(['name' => 'school admin']);
+        $roleSchoolAdmin = Role::firstOrCreate(['name' => 'schooladmin']);
         $roleSchoolAdmin->givePermissionTo(['manage courses', 'manage schools']);
 
         $roleTeacher = Role::firstOrCreate(['name' => 'teacher']);
