@@ -22,7 +22,7 @@ Auth::routes();
 // Dashboard Routes
 Route::middleware(['auth'])->group(function () {
     // Super Admin Dashboard
-    Route::get('/dashboard/super-admin', [DashboardController::class, 'superAdmin'])->name('dashboard.superadmin')->middleware('can:manage-system');
+    Route::get('/dashboard/super_admin', [DashboardController::class, 'superAdmin'])->name('dashboard.super_admin')->middleware('can:manage-system');
 
     // School Admin Dashboard
     Route::get('/dashboard/school-admin', [DashboardController::class, 'schoolAdmin'])->name('dashboard.schooladmin')->middleware('can:manage-school');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classes;
 use App\Models\School;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -55,7 +56,16 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $schools = School::all(); // Get all schools
-        return view('auth.register', compact('schools'));
+        $classes = [];
+        
+        // Check if a school is selected
+        if(request()->has('school_id')) {
+            $schoolId = request('school_id');
+            // Get classes based on the selected school
+            $classes = Classes::where('school_id', $schoolId)->get();
+        }
+
+        return view('auth.register', compact('schools', 'classes'));
     }
     // Override method redirectTo untuk mengarahkan pengguna ke halaman login setelah berhasil registrasi
     protected function redirectTo()

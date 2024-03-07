@@ -122,37 +122,33 @@
             const schoolDropdown = document.getElementById('school');
             const classDropdown = document.getElementById('class');
     
-            // Pastikan dropdown tidak disabled secara default
-            classDropdown.disabled = false; 
+            // Pastikan dropdown kelas dinonaktifkan secara default
+            classDropdown.disabled = true;
     
             schoolDropdown.addEventListener('change', function() {
                 const schoolId = this.value;
-                console.log(schoolId);
                 classDropdown.innerHTML = '<option value="">Pilih Kelas</option>';
-                classDropdown.disabled = schoolId === ""; // Disable dropdown jika tidak ada schoolId
+                classDropdown.disabled = true; // Nonaktifkan dropdown kelas sementara
     
                 if (schoolId) {
                     fetch(`/get-classes/${schoolId}`)
                         .then(response => response.json())
-                        .then(classes => {
-                            classDropdown.disabled = false; // Enable kembali dropdown
-                            if (Array.isArray(classes) && classes.length) {
-                                classes.forEach((kelas) => {
-                                    const option = new Option(kelas.class_name, kelas.id);
-                                    classDropdown.options.add(option);
-                                });
-                            } else {
-                                classDropdown.options.add(new Option('Tidak ada kelas tersedia', ''));
-                            }
+                        .then(data => {
+                            classDropdown.disabled = false; // Aktifkan dropdown kelas kembali
+                            data.forEach(kelas => {
+                                const option = new Option(kelas.class_name, kelas.id);
+                                classDropdown.add(option);
+                            });
                         })
                         .catch(error => {
                             console.error('Error fetching classes:', error);
-                            classDropdown.disabled = false; // Enable kembali dropdown jika terjadi error
+                            classDropdown.disabled = true; // Nonaktifkan dropdown kelas jika terjadi error
                         });
                 }
             });
         });
     </script>
+    
     
 </body>
 </html>
